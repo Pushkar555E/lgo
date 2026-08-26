@@ -11,9 +11,9 @@ export default function DisasterDashboard() {
       {/* Header */}
       <header className="flex shrink-0 items-center justify-between border-b border-border-subtle bg-surface px-6 py-3">
         <div className="flex items-baseline gap-3">
-          <h1 className="font-display text-lg font-bold tracking-tight">Bhoomi Watch</h1>
+          <h1 className="font-display text-lg font-bold tracking-tight">NER AI Landslide Early Warning</h1>
           <span className="font-mono text-xs text-text-muted">
-            Landslide monitoring · West Bengal hill districts
+            Ministry of DoNER · Real-time Risk Monitoring System
           </span>
         </div>
 

@@ -3,8 +3,8 @@ import * as maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { districtZones } from "./districtZones";
 import { RISK_COLORS, type DistrictZoneProperties } from "./geo";
-const INITIAL_CENTER: [number, number] = [88.35, 27.0]; // Darjeeling-Kalimpong hill belt
-const INITIAL_ZOOM = 10.2;
+const INITIAL_CENTER: [number, number] = [92.5, 26.0]; // North Eastern Region
+const INITIAL_ZOOM = 6.5;
 
 interface DisasterMapProps {
   onZoneSelect?: (zone: DistrictZoneProperties | null) => void;

@@ -1,12 +1,8 @@
 import type { DistrictZoneCollection } from "./geo";
 
 /**
- * Placeholder district polygons approximating the Darjeeling-Kalimpong
- * hill belt (a real landslide-prone corridor in West Bengal). Swap this
- * static file for a fetch against your PostGIS `risk_zones` table's
- * GeoJSON export endpoint once the backend is wired up:
- *
- *   GET /api/risk-zones -> ST_AsGeoJSON aggregate from the RiskZones table
+ * Placeholder district polygons for the North Eastern Region (NER).
+ * Used for AI-Based early warning and landslide Risk Monitoring visualization.
  */
 export const districtZones: DistrictZoneCollection = {
   type: "FeatureCollection",
@@ -14,23 +10,45 @@ export const districtZones: DistrictZoneCollection = {
     {
       type: "Feature",
       properties: {
-        zoneId: "zone-darjeeling",
-        districtName: "Darjeeling",
+        zoneId: "zone-east-khasi",
+        districtName: "East Khasi Hills",
+        riskLevel: "CRITICAL",
+        riskScore: 89,
+        populationEstimate: 825922,
+        lastAssessedAt: "2026-08-25T06:00:00Z",
+      },
+      geometry: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [91.5, 25.7],
+            [92.1, 25.7],
+            [92.2, 25.2],
+            [91.6, 25.2],
+            [91.5, 25.7],
+          ],
+        ],
+      },
+    },
+    {
+      type: "Feature",
+      properties: {
+        zoneId: "zone-dima-hasao",
+        districtName: "Dima Hasao",
         riskLevel: "CRITICAL",
         riskScore: 82,
-        populationEstimate: 46000,
+        populationEstimate: 214102,
         lastAssessedAt: "2026-08-25T06:00:00Z",
       },
       geometry: {
         type: "Polygon",
         coordinates: [
           [
-            [88.24, 27.05],
-            [88.3, 27.05],
-            [88.31, 27.02],
-            [88.27, 26.99],
-            [88.22, 27.0],
-            [88.24, 27.05],
+            [92.7, 25.5],
+            [93.3, 25.6],
+            [93.4, 25.0],
+            [92.8, 24.9],
+            [92.7, 25.5],
           ],
         ],
       },
@@ -38,23 +56,22 @@ export const districtZones: DistrictZoneCollection = {
     {
       type: "Feature",
       properties: {
-        zoneId: "zone-kalimpong",
-        districtName: "Kalimpong",
+        zoneId: "zone-tawang",
+        districtName: "Tawang",
         riskLevel: "MODERATE",
-        riskScore: 54,
-        populationEstimate: 31000,
+        riskScore: 65,
+        populationEstimate: 49977,
         lastAssessedAt: "2026-08-25T06:00:00Z",
       },
       geometry: {
         type: "Polygon",
         coordinates: [
           [
-            [88.45, 27.08],
-            [88.52, 27.07],
-            [88.53, 27.03],
-            [88.47, 27.01],
-            [88.43, 27.04],
-            [88.45, 27.08],
+            [91.7, 27.7],
+            [92.1, 27.7],
+            [92.2, 27.4],
+            [91.8, 27.3],
+            [91.7, 27.7],
           ],
         ],
       },
@@ -62,23 +79,22 @@ export const districtZones: DistrictZoneCollection = {
     {
       type: "Feature",
       properties: {
-        zoneId: "zone-kurseong",
-        districtName: "Kurseong",
+        zoneId: "zone-aizawl",
+        districtName: "Aizawl",
         riskLevel: "LOW",
-        riskScore: 21,
-        populationEstimate: 18500,
+        riskScore: 28,
+        populationEstimate: 400309,
         lastAssessedAt: "2026-08-25T06:00:00Z",
       },
       geometry: {
         type: "Polygon",
         coordinates: [
           [
-            [88.27, 26.95],
-            [88.33, 26.94],
-            [88.34, 26.9],
-            [88.28, 26.89],
-            [88.25, 26.92],
-            [88.27, 26.95],
+            [92.6, 23.9],
+            [92.9, 23.9],
+            [93.0, 23.5],
+            [92.7, 23.5],
+            [92.6, 23.9],
           ],
         ],
       },
