@@ -1,12 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import mapboxgl from "mapbox-gl";
-import "mapbox-gl/dist/mapbox-gl.css";
+import * as maplibregl from "maplibre-gl";
+import "maplibre-gl/dist/maplibre-gl.css";
 import { districtZones } from "./districtZones";
 import { RISK_COLORS, type DistrictZoneProperties } from "./geo";
-
-// Set this via your bundler's env mechanism, e.g. Vite: import.meta.env.VITE_MAPBOX_TOKEN
-mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN ?? "";
-
 const INITIAL_CENTER: [number, number] = [88.35, 27.0]; // Darjeeling-Kalimpong hill belt
 const INITIAL_ZOOM = 10.2;
 
@@ -16,24 +12,23 @@ interface DisasterMapProps {
 
 export default function DisasterMap({ onZoneSelect }: DisasterMapProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const mapRef = useRef<mapboxgl.Map | null>(null);
+  const mapRef = useRef<maplibregl.Map | null>(null);
   const [mapReady, setMapReady] = useState(false);
 
   // Initialize the map once on mount
   useEffect(() => {
-    if (!containerRef.current || mapRef.current || !mapboxgl.accessToken) return;
+    if (!containerRef.current || mapRef.current) return;
 
-    const map = new mapboxgl.Map({
+    const map = new maplibregl.Map({
       container: containerRef.current,
-      style: "mapbox://styles/mapbox/dark-v11",
+      style: "https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json",
       center: INITIAL_CENTER,
       zoom: INITIAL_ZOOM,
-      pitch: 40,
-      attributionControl: true,
+      pitch: 40
     });
 
-    map.addControl(new mapboxgl.NavigationControl({ visualizePitch: true }), "top-right");
-    map.addControl(new mapboxgl.ScaleControl({ unit: "metric" }), "bottom-left");
+    map.addControl(new maplibregl.NavigationControl({ visualizePitch: true }), "top-right");
+    map.addControl(new maplibregl.ScaleControl({ unit: "metric" }), "bottom-left");
 
     map.on("load", () => {
       mapRef.current = map;
@@ -100,9 +95,9 @@ export default function DisasterMap({ onZoneSelect }: DisasterMapProps) {
         },
       });
 
-      const popup = new mapboxgl.Popup({ closeButton: false, closeOnClick: false, offset: 12 });
+      const popup = new maplibregl.Popup({ closeButton: false, closeOnClick: false, offset: 12 });
 
-      map.on("mousemove", "district-zones-fill", (e) => {
+      map.on("mousemove", "district-zones-fill", (e: any) => {
         map.getCanvas().style.cursor = "pointer";
         const feature = e.features?.[0];
         if (!feature) return;
@@ -125,7 +120,7 @@ export default function DisasterMap({ onZoneSelect }: DisasterMapProps) {
         popup.remove();
       });
 
-      map.on("click", "district-zones-fill", (e) => {
+      map.on("click", "district-zones-fill", (e: any) => {
         const feature = e.features?.[0];
         if (feature && onZoneSelect) {
           onZoneSelect(feature.properties as DistrictZoneProperties);
@@ -137,15 +132,6 @@ export default function DisasterMap({ onZoneSelect }: DisasterMapProps) {
   return (
     <div className="relative h-full w-full">
       <div ref={containerRef} className="h-full w-full" />
-
-      {!mapboxgl.accessToken && (
-        <div className="absolute inset-0 flex items-center justify-center bg-base-950/90 px-6 text-center">
-          <p className="max-w-sm font-mono text-sm text-text-muted">
-            Set VITE_MAPBOX_TOKEN in your environment to render the map. Get a free token at
-            mapbox.com.
-          </p>
-        </div>
-      )}
 
       {/* Risk legend, content-justified overlay (not decorative chrome) */}
       <div className="absolute bottom-6 left-6 rounded-md border border-border-subtle bg-surface/90 px-4 py-3 backdrop-blur-sm">
