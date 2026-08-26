@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+/* Keep Mapbox's own UI controls legible against the dark basemap without
+   fighting Tailwind's reset on every child element. */
+.mapboxgl-popup-content {
+  border-radius: 6px;
+  padding: 10px 12px;
+}

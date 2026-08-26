@@ -1,0 +1,17 @@
+{
+  "name": "landslide-demo-simulator",
+  "version": "1.0.0",
+  "description": "Live-demo simulator: injects escalating rainfall/tilt sensor readings to trigger the risk map and SMS alert for hackathon judges.",
+  "main": "simulate.js",
+  "scripts": {
+    "demo": "node simulate.js",
+    "demo:dry-run": "DRY_RUN=true node simulate.js"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.20.0",
+    "dotenv": "^16.4.5",
+    "pg": "^8.23.0",
+    "twilio": "^6.1.0"
+  }
+}
