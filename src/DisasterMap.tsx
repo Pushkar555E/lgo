@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-import { districtZones } from "../data/districtZones";
-import { RISK_COLORS, type DistrictZoneProperties } from "../types/geo";
+import { districtZones } from "./districtZones";
+import { RISK_COLORS, type DistrictZoneProperties } from "./geo";
 
 // Set this via your bundler's env mechanism, e.g. Vite: import.meta.env.VITE_MAPBOX_TOKEN
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN ?? "";

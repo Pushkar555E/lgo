@@ -1,4 +1,4 @@
-import type { AlertItem } from "../types/geo";
+import type { AlertItem } from "./geo";
 
 /**
  * Placeholder alerts feed. In production, replace with a poll/WebSocket

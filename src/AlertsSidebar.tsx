@@ -1,5 +1,5 @@
-import { alerts } from "../data/alerts";
-import { RISK_COLORS, type AlertItem, type RiskLevel } from "../types/geo";
+import { alerts } from "./alerts";
+import { RISK_COLORS, type AlertItem, type RiskLevel } from "./geo";
 
 function timeAgo(isoString: string): string {
   const diffMs = Date.now() - new Date(isoString).getTime();

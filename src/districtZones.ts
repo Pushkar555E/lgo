@@ -1,4 +1,4 @@
-import type { DistrictZoneCollection } from "../types/geo";
+import type { DistrictZoneCollection } from "./geo";
 
 /**
  * Placeholder district polygons approximating the Darjeeling-Kalimpong

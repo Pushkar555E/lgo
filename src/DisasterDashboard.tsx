@@ -1,7 +1,7 @@
 import { useState } from "react";
 import DisasterMap from "./DisasterMap";
 import AlertsSidebar from "./AlertsSidebar";
-import type { DistrictZoneProperties } from "../types/geo";
+import type { DistrictZoneProperties } from "./geo";
 
 export default function DisasterDashboard() {
   const [selectedZone, setSelectedZone] = useState<DistrictZoneProperties | null>(null);
