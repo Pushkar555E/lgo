@@ -21,7 +21,7 @@ export default function DisasterMap({ onZoneSelect }: DisasterMapProps) {
 
   // Initialize the map once on mount
   useEffect(() => {
-    if (!containerRef.current || mapRef.current) return;
+    if (!containerRef.current || mapRef.current || !mapboxgl.accessToken) return;
 
     const map = new mapboxgl.Map({
       container: containerRef.current,
